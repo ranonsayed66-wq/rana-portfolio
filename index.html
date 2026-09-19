@@ -1,12 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Rana — Web Developer creating modern, responsive and elegant websites for businesses, brands and individuals.">
-<meta name="theme-color" content="#10251f">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Rana — Web Developer creating modern, responsive and elegant websites for businesses, brands and individuals." name="description"/>
+<meta content="#10251f" name="theme-color"/>
 <title>Rana | Web Developer</title>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
@@ -416,336 +416,296 @@ footer{
   .profile-art{min-height:390px}
 }
 </style>
-
 <!-- Portfolio security hardening -->
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
+<meta content="camera=(), microphone=(), geolocation=()" http-equiv="Permissions-Policy"/>
 <style>
 img{-webkit-user-drag:none;user-select:none}
 .security-note{font-size:12px;opacity:.65;margin-top:10px}
 </style>
-
-</head>
-
-
+<style>
+.portfolio-tools{position:fixed;top:16px;right:16px;z-index:3000;display:flex;gap:8px}
+.portfolio-tools button{border:1px solid #d9dee3;background:#fff;color:#172027;border-radius:999px;padding:9px 13px;font-weight:700;cursor:pointer;box-shadow:0 5px 18px rgba(0,0,0,.08)}
+.portfolio-tools button:hover{transform:translateY(-1px)}
+body.dark-mode{background:#101416!important;color:#f2f5f6!important}
+body.dark-mode header,body.dark-mode section,body.dark-mode footer{background-color:#101416!important;color:#f2f5f6!important}
+body.dark-mode .project,body.dark-mode .service-card,body.dark-mode .skill-card,body.dark-mode .about-card{background:#171c20!important;color:#f2f5f6!important}
+body.dark-mode .project h3,body.dark-mode .service-card h3,body.dark-mode .skill-card h3,body.dark-mode .about-card h3{color:#f2f5f6!important}
+body.dark-mode p,body.dark-mode .step p{color:#c5ced3!important}
+body.dark-mode .portfolio-tools button{background:#171c20;color:#fff;border-color:#3b454d}
+body.dark-mode .nav-links{background:#171c20;border-color:#3b454d}
+.riva-modal{position:fixed;inset:0;background:rgba(0,0,0,.68);display:none;align-items:center;justify-content:center;padding:18px;z-index:4000}
+.riva-modal.open{display:flex}
+.riva-modal-box{max-width:720px;width:100%;max-height:85vh;overflow:auto;background:#fff;color:#172027;border-radius:22px;padding:30px;position:relative;box-shadow:0 25px 80px rgba(0,0,0,.3)}
+.riva-modal-close{position:absolute;right:14px;top:12px;border:0;background:#eee;border-radius:50%;width:38px;height:38px;font-size:24px;cursor:pointer}
+body.dark-mode .riva-modal-box{background:#171c20;color:#f2f5f6}
+body.dark-mode .riva-modal-close{background:#2b3339;color:#fff}
+.project-details-btn{font:inherit;cursor:pointer}
+@media(max-width:560px){.portfolio-tools{top:10px;right:10px}.portfolio-tools button{padding:8px 10px;font-size:12px}}
+</style></head>
 <body>
-<div class="portfolio-tools">
-  <button id="languageToggle" type="button">العربية</button>
-  <button id="themeToggle" type="button" aria-label="Toggle theme">◐</button>
+
+<div aria-label="Portfolio controls" class="portfolio-tools">
+<button id="languageToggle" type="button">العربية</button>
+<button aria-label="Toggle light and dark mode" id="themeToggle" type="button">◐</button>
 </div>
-
-
+<div aria-labelledby="detailsTitle" aria-modal="true" class="riva-modal" id="projectDetailsModal" role="dialog">
+<div class="riva-modal-box">
+<button aria-label="Close" class="riva-modal-close" id="detailsClose" type="button">×</button>
+<h3 id="detailsTitle"></h3>
+<p id="detailsText"></p>
+</div>
+</div>
 <header>
-  <div class="container nav">
-    <a href="#home" class="logo">Rana<span>.</span></a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
-    <nav class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
+<div class="container nav">
+<a class="logo" href="#home">Rana<span>.</span></a>
+<button aria-label="Open menu" class="menu-btn" id="menuBtn">☰</button>
+<nav class="nav-links" id="navLinks">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+</div>
 </header>
-
 <main>
-
 <section class="hero" id="home">
-  <div class="container hero-grid">
-    <div>
-      <div class="badge"><span class="dot"></span> Available for freelance projects</div>
-      <h1>Building <span>digital</span> experiences.</h1>
-      <p>
+<div class="container hero-grid">
+<div>
+<div class="badge"><span class="dot"></span> Available for freelance projects</div>
+<h1>Building <span>digital</span> experiences.</h1>
+<p>
         I'm Rana, a Web Developer creating modern, responsive and elegant websites
         for businesses, brands and individuals.
       </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#contact">Let's Work Together →</a>
-        <a class="btn btn-light" href="#projects">View My Work</a>
-      </div>
-      <div class="stats">
-        <div class="stat"><strong>03</strong><span>Projects</span></div>
-        <div class="stat"><strong>100%</strong><span>Responsive</span></div>
-        <div class="stat"><strong>24/7</strong><span>Online Contact</span></div>
-      </div>
-    </div>
-
-    <div class="hero-card">
-      <div class="profile-art">
-        <img class="hero-photo" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=85" alt="Modern web development workspace">
-        <div class="profile-info">
-          <small>WEB DEVELOPER</small>
-          <h3>Rana — Creative & Modern Websites</h3>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#contact">Let's Work Together →</a>
+<a class="btn btn-light" href="#projects">View My Work</a>
+</div>
+<div class="stats">
+<div class="stat"><strong>03</strong><span>Projects</span></div>
+<div class="stat"><strong>100%</strong><span>Responsive</span></div>
+<div class="stat"><strong>24/7</strong><span>Online Contact</span></div>
+</div>
+</div>
+<div class="hero-card">
+<div class="profile-art">
+<img alt="Modern web development workspace" class="hero-photo" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"/>
+<div class="profile-info">
+<small>WEB DEVELOPER</small>
+<h3>Rana — Creative &amp; Modern Websites</h3>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <section id="about">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">About me</div>
-      <h2>Simple ideas, carefully built.</h2>
-      <p>I focus on clean layouts, responsive design and a smooth experience across phones, tablets and computers.</p>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-box">
-        <h3>Hi, I'm Rana.</h3>
-        <p>
+<div class="container">
+<div class="section-head">
+<div class="eyebrow">About me</div>
+<h2>Simple ideas, carefully built.</h2>
+<p>I focus on clean layouts, responsive design and a smooth experience across phones, tablets and computers.</p>
+</div>
+<div class="about-grid">
+<div class="about-box">
+<h3>Hi, I'm Rana.</h3>
+<p>
           I'm a beginner Web Developer building my skills through real projects.
           My goal is to create websites that look professional, feel easy to use,
           and represent each client's idea clearly.
         </p>
-      </div>
-
-      <div class="about-text">
-        <p>
+</div>
+<div class="about-text">
+<p>
           I work with HTML, CSS and JavaScript to turn ideas into functional,
           responsive web pages. I care about details, organized code and modern
           visual design.
         </p>
-        <p>
+<p>
           Whether you need a restaurant website, business landing page, personal
           website or a simple online presence, I can build a tailored starting point.
         </p>
-        <div class="checks">
-          <div class="check">Responsive design</div>
-          <div class="check">Clean modern UI</div>
-          <div class="check">Mobile friendly</div>
-          <div class="check">Clear communication</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="checks">
+<div class="check">Responsive design</div>
+<div class="check">Clean modern UI</div>
+<div class="check">Mobile friendly</div>
+<div class="check">Clear communication</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <section id="services">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">What I do</div>
-      <h2>Services</h2>
-      <p>Focused web solutions for people and small businesses.</p>
-    </div>
-
-    <div class="cards">
-      <div class="card">
-        <div class="icon">&lt;/&gt;</div>
-        <h3>Website Development</h3>
-        <p>Modern websites built with clean HTML, CSS and JavaScript.</p>
-      </div>
-      <div class="card">
-        <div class="icon">UI</div>
-        <h3>Responsive Design</h3>
-        <p>Layouts that adapt smoothly to phones, tablets and desktop screens.</p>
-      </div>
-      <div class="card">
-        <div class="icon">↗</div>
-        <h3>Landing Pages</h3>
-        <p>Focused pages for businesses, services, products and personal brands.</p>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-head">
+<div class="eyebrow">What I do</div>
+<h2>Services</h2>
+<p>Focused web solutions for people and small businesses.</p>
+</div>
+<div class="cards">
+<div class="card">
+<div class="icon">&lt;/&gt;</div>
+<h3>Website Development</h3>
+<p>Modern websites built with clean HTML, CSS and JavaScript.</p>
+</div>
+<div class="card">
+<div class="icon">UI</div>
+<h3>Responsive Design</h3>
+<p>Layouts that adapt smoothly to phones, tablets and desktop screens.</p>
+</div>
+<div class="card">
+<div class="icon">↗</div>
+<h3>Landing Pages</h3>
+<p>Focused pages for businesses, services, products and personal brands.</p>
+</div>
+</div>
+</div>
 </section>
-
 <section id="skills">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">My toolkit</div>
-      <h2>Skills</h2>
-      <p>Technologies and abilities I am currently using and developing.</p>
-    </div>
-
-    <div class="skills-wrap">
-      <div>
-        <div class="skill">
-          <div class="skill-top"><span>HTML</span><span>95%</span></div>
-          <div class="bar"><div class="fill" style="width:95%"></div></div>
-        </div>
-        <div class="skill">
-          <div class="skill-top"><span>CSS</span><span>90%</span></div>
-          <div class="bar"><div class="fill" style="width:90%"></div></div>
-        </div>
-      </div>
-      <div>
-        <div class="skill">
-          <div class="skill-top"><span>JavaScript</span><span>85%</span></div>
-          <div class="bar"><div class="fill" style="width:85%"></div></div>
-        </div>
-        <div class="skill">
-          <div class="skill-top"><span>Responsive Design</span><span>90%</span></div>
-          <div class="bar"><div class="fill" style="width:90%"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-head">
+<div class="eyebrow">My toolkit</div>
+<h2>Skills</h2>
+<p>Technologies and abilities I am currently using and developing.</p>
+</div>
+<div class="skills-wrap">
+<div>
+<div class="skill">
+<div class="skill-top"><span>HTML</span><span>95%</span></div>
+<div class="bar"><div class="fill" style="width:95%"></div></div>
+</div>
+<div class="skill">
+<div class="skill-top"><span>CSS</span><span>90%</span></div>
+<div class="bar"><div class="fill" style="width:90%"></div></div>
+</div>
+</div>
+<div>
+<div class="skill">
+<div class="skill-top"><span>JavaScript</span><span>85%</span></div>
+<div class="bar"><div class="fill" style="width:85%"></div></div>
+</div>
+<div class="skill">
+<div class="skill-top"><span>Responsive Design</span><span>90%</span></div>
+<div class="bar"><div class="fill" style="width:90%"></div></div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <section class="projects" id="projects">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">Selected work</div>
-      <h2>Projects</h2>
-      <p>A growing collection of practical projects built to improve my development skills.</p>
-    </div>
-
-    <div class="cards">
-
-      <article class="project">
-        <div class="project-preview photo-preview">
-          <img class="project-photo" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85" alt="Restaurant interior">
-        </div>
-        <div class="project-body">
-          <span class="project-tag">HTML · CSS · JavaScript</span>
-          <h3>Luna Bistro</h3>
-          <p>A modern restaurant website with a clean visual identity, menu, cart and WhatsApp ordering experience.</p>
-          <div class="project-links">
-            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://ranonsayed66-wq.github.io/Luna-Bistor/">Live Website ↗</a>
-            <a class="btn btn-light" target="_blank" rel="noopener" href="https://github.com/ranonsayed66-wq">GitHub ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="project">
-        <div class="project-preview photo-preview">
-          <img class="project-photo" src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=85" alt="Business team working together">
-        </div>
-        <div class="project-body">
-          <span class="project-tag">HTML · CSS · JavaScript</span>
-          <h3>Novara Studio</h3>
-          <p>A modern responsive business website with services, projects, testimonials, contact form and WhatsApp integration.</p>
-          <div class="project-links">
-            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://ranonsayed66-wq.github.io/novara-studio/">Live Website ↗</a>
-            <a class="btn btn-light" target="_blank" rel="noopener" href="https://github.com/ranonsayed66-wq">GitHub ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="project">
-        <div class="project-preview photo-preview">
-          <img class="project-photo" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=85" alt="Web development workspace">
-        </div>
-        <div class="project-body">
-          <span class="project-tag">Portfolio · Responsive</span>
-          <h3>Personal Portfolio</h3>
-          <p>A personal portfolio designed to present services, skills, projects and contact information.</p>
-          <div class="project-links">
-            <a class="btn btn-primary" href="#home">You Are Here ↗</a>
-            <a class="btn btn-light" target="_blank" rel="noopener" href="https://github.com/ranonsayed66-wq">GitHub ↗</a>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
+<div class="container">
+<div class="section-head">
+<div class="eyebrow">Selected work</div>
+<h2>Projects</h2>
+<p>A growing collection of practical projects built to improve my development skills.</p>
+</div>
+<div class="cards">
+<article class="project">
+<div class="project-preview photo-preview">
+<img alt="Restaurant interior" class="project-photo" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"/>
+</div>
+<div class="project-body">
+<span class="project-tag">HTML · CSS · JavaScript</span>
+<h3>Luna Bistro</h3>
+<p>A modern restaurant website with a clean visual identity, menu, cart and WhatsApp ordering experience.</p>
+<div class="project-links">
+<a class="btn btn-primary" href="https://ranonsayed66-wq.github.io/Luna-Bistor/" rel="noopener" target="_blank">Live Website ↗</a>
+<a class="btn btn-light" href="https://github.com/ranonsayed66-wq" rel="noopener" target="_blank">GitHub ↗</a>
+<button class="btn btn-light project-details-btn" data-details-ar="موقع مطعم عصري يحتوي على تصنيفات المنيو وسلة شراء ونظام تواصل وطلب عبر واتساب." data-details-en="A modern restaurant website with menu categories, cart, reservation/contact flow and WhatsApp ordering." data-title-ar="Luna Bistro — تفاصيل المشروع" data-title-en="Luna Bistro — Project Details" type="button">Project Details</button></div>
+</div>
+</article>
+<article class="project">
+<div class="project-preview photo-preview">
+<img alt="Business team working together" class="project-photo" src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"/>
+</div>
+<div class="project-body">
+<span class="project-tag">HTML · CSS · JavaScript</span>
+<h3>Novara Studio</h3>
+<p>A modern responsive business website with services, projects, testimonials, contact form and WhatsApp integration.</p>
+<div class="project-links">
+<a class="btn btn-primary" href="https://ranonsayed66-wq.github.io/novara-studio/" rel="noopener" target="_blank">Live Website ↗</a>
+<a class="btn btn-light" href="https://github.com/ranonsayed66-wq" rel="noopener" target="_blank">GitHub ↗</a>
+<button class="btn btn-light project-details-btn" data-details-ar="موقع أعمال متجاوب يحتوي على الخدمات والمشاريع وآراء العملاء ونموذج تواصل وربط بواتساب." data-details-en="A responsive business website with services, projects, testimonials, contact form and WhatsApp integration." data-title-ar="Novara Studio — تفاصيل المشروع" data-title-en="Novara Studio — Project Details" type="button">Project Details</button></div>
+</div>
+</article>
+<article class="project">
+<div class="project-preview photo-preview">
+<img alt="Riva Store" class="project-photo" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"/>
+</div>
+<div class="project-body">
+<span class="project-tag">HTML · CSS · JavaScript</span>
+<h3>Riva Store</h3>
+<p>An original modern e-commerce website with products, categories, shopping cart and WhatsApp ordering.</p>
+<div class="project-links">
+<a class="btn btn-primary" href="https://ranonsayed66-wq.github.io/riva-store/" rel="noopener" target="_blank">Live Website ↗</a>
+<button class="btn btn-light project-details-btn" data-details-ar="متجر إلكتروني أصلي تم إنشاؤه من الصفر. يحتوي على التصنيفات وتفاصيل المنتجات وسلة شراء وتصميم متجاوب وطلب عبر واتساب." data-details-en="Original e-commerce concept built from scratch. Includes product categories, product details, shopping cart, responsive design and WhatsApp ordering." data-title-ar="Riva Store — تفاصيل المشروع" data-title-en="Riva Store — Project Details" type="button">Project Details</button>
+</div>
+</div>
+</article>
+<article class="project">
+<div class="project-preview photo-preview">
+<img alt="Web development workspace" class="project-photo" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"/>
+</div>
+<div class="project-body">
+<span class="project-tag">Portfolio · Responsive</span>
+<h3>Personal Portfolio</h3>
+<p>A personal portfolio designed to present services, skills, projects and contact information.</p>
+<div class="project-links">
+<a class="btn btn-primary" href="#home">You Are Here ↗</a>
+<a class="btn btn-light" href="https://github.com/ranonsayed66-wq" rel="noopener" target="_blank">GitHub ↗</a>
+<button class="btn btn-light project-details-btn" data-details-ar="بورتفوليو شخصي لعرض مهارات تطوير الويب والخدمات والمشاريع وبيانات التواصل." data-details-en="A personal portfolio presenting web development skills, services, selected projects and contact information." data-title-ar="Portfolio الشخصي — تفاصيل المشروع" data-title-en="Personal Portfolio — Project Details" type="button">Project Details</button></div>
+</div>
+</article>
+</div>
+</div>
 </section>
-
 <section>
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">My process</div>
-      <h2>How I work</h2>
-      <p>A simple process from idea to published website.</p>
-    </div>
-
-    <div class="process">
-      <div class="step"><div class="step-num">01</div><h3>Discuss</h3><p>Understand the idea, audience and goals.</p></div>
-      <div class="step"><div class="step-num">02</div><h3>Design</h3><p>Plan the structure and visual direction.</p></div>
-      <div class="step"><div class="step-num">03</div><h3>Build</h3><p>Develop the responsive website and interactions.</p></div>
-      <div class="step"><div class="step-num">04</div><h3>Launch</h3><p>Test the pages and publish the final version.</p></div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-head">
+<div class="eyebrow">My process</div>
+<h2>How I work</h2>
+<p>A simple process from idea to published website.</p>
+</div>
+<div class="process">
+<div class="step"><div class="step-num">01</div><h3>Discuss</h3><p>Understand the idea, audience and goals.</p></div>
+<div class="step"><div class="step-num">02</div><h3>Design</h3><p>Plan the structure and visual direction.</p></div>
+<div class="step"><div class="step-num">03</div><h3>Build</h3><p>Develop the responsive website and interactions.</p></div>
+<div class="step"><div class="step-num">04</div><h3>Launch</h3><p>Test the pages and publish the final version.</p></div>
+</div>
+</div>
 </section>
-
 <section class="contact" id="contact">
-  <div class="container">
-    <div class="contact-box">
-      <div>
-        <div class="eyebrow" style="color:#a9c0b3">Let's connect</div>
-        <h2>Have a project in mind?</h2>
-        <p>
+<div class="container">
+<div class="contact-box">
+<div>
+<div class="eyebrow" style="color:#a9c0b3">Let's connect</div>
+<h2>Have a project in mind?</h2>
+<p>
           Tell me what you need and let's discuss how I can turn your idea into
           a clean, modern website.
         </p>
-      </div>
-      <div class="contact-actions">
-        <a class="btn btn-light" target="_blank" rel="noopener"
-           href="https://wa.me/201024546840?text=Hello%20Rana%2C%20I%20saw%20your%20portfolio%20and%20I%27m%20interested%20in%20a%20website.">
+</div>
+<div class="contact-actions">
+<a class="btn btn-light" href="https://wa.me/201024546840?text=Hello%20Rana%2C%20I%20saw%20your%20portfolio%20and%20I%27m%20interested%20in%20a%20website." rel="noopener" target="_blank">
           WhatsApp Me ↗
         </a>
-        <a class="btn" style="color:white;border-color:#456257"
-           href="https://github.com/ranonsayed66-wq" target="_blank" rel="noopener">
+<a class="btn" href="https://github.com/ranonsayed66-wq" rel="noopener" style="color:white;border-color:#456257" target="_blank">
           View GitHub ↗
         </a>
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
 </section>
-
 </main>
-
 <footer>
-  <div class="container footer">
-    <div>© 2026 Rana. All rights reserved.</div>
-    <div><a href="#home">Back to top ↑</a></div>
-  </div>
+<div class="container footer">
+<div>© 2026 Rana. All rights reserved.</div>
+<div><a href="#home">Back to top ↑</a></div>
+</div>
 </footer>
-
-<script>
-const menuBtn = document.getElementById('menuBtn');
-const navLinks = document.getElementById('navLinks');
-
-menuBtn.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
-
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
-});
-</script>
-
-
-<script>
-(function(){
-  const langBtn=document.getElementById('languageToggle');
-  const themeBtn=document.getElementById('themeToggle');
-  let lang=localStorage.getItem('portfolioLang')||'en';
-
-  function applyLang(){
-    document.documentElement.lang=lang;
-    document.documentElement.dir=lang==='ar'?'rtl':'ltr';
-    document.querySelectorAll('[data-en][data-ar]').forEach(el=>{
-      el.textContent=lang==='ar'?el.dataset.ar:el.dataset.en;
-    });
-    if(langBtn) langBtn.textContent=lang==='en'?'العربية':'English';
-  }
-
-  langBtn?.addEventListener('click',()=>{
-    lang=lang==='en'?'ar':'en';
-    localStorage.setItem('portfolioLang',lang);
-    applyLang();
-  });
-
-  if(localStorage.getItem('portfolioTheme')==='dark')
-    document.body.classList.add('dark-mode');
-
-  themeBtn?.addEventListener('click',()=>{
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem('portfolioTheme',
-      document.body.classList.contains('dark-mode')?'dark':'light');
-  });
-
-  document.querySelectorAll('img').forEach(img=>{
-    img.setAttribute('draggable','false');
-  });
-
-  applyLang();
-})();
-</script>
 
 
 <style>
@@ -767,73 +727,116 @@ body.dark-mode .portfolio-tools button,body.dark-mode .riva-info-btn{background:
 body.dark-mode .riva-modal-box{background:#171c20;color:#f2f5f6}
 body.dark-mode .riva-modal-close{background:#2b3339;color:#fff}
 </style>
-
-<div class="portfolio-tools">
-  <button id="languageToggle" type="button">العربية</button>
-  <button id="themeToggle" type="button" aria-label="Toggle theme">◐</button>
-</div>
-
-<div class="riva-modal" id="rivaDetailsModal" role="dialog" aria-modal="true">
-  <div class="riva-modal-box">
-    <button class="riva-modal-close" id="rivaClose" type="button">×</button>
-    <h3 data-en="Riva Store — Project Details" data-ar="Riva Store — تفاصيل المشروع">Riva Store — Project Details</h3>
-    <p data-en="An original e-commerce concept created from scratch as part of the portfolio."
-       data-ar="فكرة متجر إلكتروني أصلية تم إنشاؤها من الصفر ضمن مشاريع البورتفوليو.">
-       An original e-commerce concept created from scratch as part of the portfolio.
-    </p>
-    <ul>
-      <li data-en="Natural-looking product imagery" data-ar="صور منتجات طبيعية وواقعية المظهر">Natural-looking product imagery</li>
-      <li data-en="Clickable products with detailed information" data-ar="منتجات قابلة للضغط مع تفاصيل كاملة">Clickable products with detailed information</li>
-      <li data-en="Shopping cart and WhatsApp ordering flow" data-ar="سلة شراء ونظام طلب عبر واتساب">Shopping cart and WhatsApp ordering flow</li>
-      <li data-en="Responsive layout for mobile and desktop" data-ar="تصميم متجاوب للموبايل والكمبيوتر">Responsive layout for mobile and desktop</li>
-      <li data-en="Light and dark visual modes" data-ar="الوضع الفاتح والداكن">Light and dark visual modes</li>
-      <li data-en="Arabic and English interface support" data-ar="دعم الواجهتين العربية والإنجليزية">Arabic and English interface support</li>
-    </ul>
-  </div>
-</div>
-
 <script>
 (function(){
-  const langBtn=document.getElementById('languageToggle');
-  const themeBtn=document.getElementById('themeToggle');
-  let lang=localStorage.getItem('portfolioLang')||'en';
+  const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => document.querySelectorAll(sel);
 
-  function applyLang(){
+  const menuBtn = $('#menuBtn');
+  const navLinks = $('#navLinks');
+  if(menuBtn && navLinks){
+    menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
+    $$('.nav-links a').forEach(link=>link.addEventListener('click',()=>navLinks.classList.remove('open')));
+  }
+
+  const langBtn=$('#languageToggle');
+  const themeBtn=$('#themeToggle');
+  let lang=localStorage.getItem('portfolioLang') || 'en';
+
+  const translations={
+    'Home':'الرئيسية','About':'عنّي','Services':'الخدمات','Skills':'المهارات','Projects':'المشاريع','Contact':'تواصل',
+    'Available for freelance projects':'متاحة لمشاريع العمل الحر',
+    'Building':'أبني','digital':'رقمية','experiences.':'تجارب رقمية.',
+    "I'm Rana, a Web Developer creating modern, responsive and elegant websites for businesses, brands and individuals.":"أنا رنا، مطورة ويب أصمم مواقع عصرية ومتجاوبة وأنيقة للشركات والعلامات التجارية والأفراد.",
+    "Let's Work Together →":"لنعمل معًا →",'View My Work':'شاهدي أعمالي',
+    'Responsive':'متجاوب','Online Contact':'تواصل أونلاين','WEB DEVELOPER':'مطورة ويب',
+    'Rana — Creative & Modern Websites':'Rana — مواقع إبداعية وعصرية',
+    'About me':'عنّي','Simple ideas, carefully built.':'أفكار بسيطة، مبنية بعناية.',
+    'I focus on clean layouts, responsive design and a smooth experience across phones, tablets and computers.':'أركز على التصميم النظيف والتجاوب وتجربة استخدام سهلة على الموبايل والتابلت والكمبيوتر.',
+    "Hi, I'm Rana.":"مرحبًا، أنا رنا.",
+    'Whether you need a restaurant website, business landing page, personal website or a simple online presence, I can build a tailored starting point.':'سواء كنتِ تحتاجين موقع مطعم أو صفحة أعمال أو موقعًا شخصيًا أو حضورًا بسيطًا أونلاين، أستطيع بناء موقع مناسب لاحتياجك.',
+    'Responsive design':'تصميم متجاوب','Clean modern UI':'واجهة عصرية ونظيفة','Mobile friendly':'متوافق مع الموبايل','Clear communication':'تواصل واضح',
+    'What I do':'ماذا أقدم','Focused web solutions for people and small businesses.':'حلول ويب عملية للأفراد والمشروعات الصغيرة.',
+    'Website Development':'تطوير المواقع','Modern websites built with clean HTML, CSS and JavaScript.':'مواقع عصرية باستخدام HTML وCSS وJavaScript.',
+    'Layouts that adapt smoothly to phones, tablets and desktop screens.':'تصميمات تتكيف بسلاسة مع الموبايل والتابلت والكمبيوتر.',
+    'Landing Pages':'صفحات هبوط','Focused pages for businesses, services, products and personal brands.':'صفحات مخصصة للأعمال والخدمات والمنتجات والعلامات الشخصية.',
+    'My toolkit':'أدواتي','Technologies and abilities I am currently using and developing.':'التقنيات والمهارات التي أستخدمها وأطورها حاليًا.',
+    'Selected work':'أعمال مختارة','A growing collection of practical projects built to improve my development skills.':'مجموعة من المشاريع العملية التي أنفذها لتطوير مهاراتي.',
+    'Luna Bistro':'Luna Bistro','Novara Studio':'Novara Studio','Personal Portfolio':'البورتفوليو الشخصي',
+    'A modern restaurant website with a clean visual identity, menu, cart and WhatsApp ordering experience.':'موقع مطعم عصري بهوية بصرية نظيفة ومنيو وسلة شراء وطلب عبر واتساب.',
+    'A modern responsive business website with services, projects, testimonials, contact form and WhatsApp integration.':'موقع أعمال متجاوب يحتوي على الخدمات والمشاريع وآراء العملاء ونموذج تواصل وربط بواتساب.',
+    'A personal portfolio designed to present services, skills, projects and contact information.':'بورتفوليو شخصي لعرض الخدمات والمهارات والمشاريع وبيانات التواصل.',
+    'Live Website ↗':'الموقع المباشر ↗','Project Details':'تفاصيل المشروع','You Are Here ↗':'أنتِ هنا ↗','GitHub ↗':'GitHub ↗',
+    'My process':'خطوات عملي','How I work':'كيف أعمل','A simple process from idea to published website.':'خطوات بسيطة من الفكرة حتى نشر الموقع.',
+    'Discuss':'مناقشة','Understand the idea, audience and goals.':'فهم الفكرة والجمهور والأهداف.',
+    'Design':'التصميم','Plan the structure and visual direction.':'تخطيط الهيكل والشكل البصري.',
+    'Build':'التنفيذ','Develop the responsive website and interactions.':'تطوير الموقع المتجاوب والتفاعلات.',
+    'Launch':'النشر','Test the pages and publish the final version.':'اختبار الصفحات ونشر النسخة النهائية.',
+    "Let's connect":'لنتواصل','Have a project in mind?':'لديكِ مشروع في بالك؟',
+    "Tell me what you need and let's discuss how I can turn your idea into a clean, modern website.":'أخبريني بما تحتاجين وسنحدد كيف أحول فكرتك إلى موقع عصري ونظيف.',
+    'WhatsApp Me ↗':'تواصلي معي عبر واتساب ↗','View GitHub ↗':'عرض GitHub ↗','Back to top ↑':'العودة للأعلى ↑',
+    '© 2026 Rana. All rights reserved.':'© 2026 Rana. جميع الحقوق محفوظة.'
+  };
+  const reverse={}; Object.keys(translations).forEach(k=>reverse[translations[k]]=k);
+
+  function setLanguage(next){
+    lang=next;
+    localStorage.setItem('portfolioLang',lang);
     document.documentElement.lang=lang;
     document.documentElement.dir=lang==='ar'?'rtl':'ltr';
-    document.querySelectorAll('[data-en][data-ar]').forEach(el=>{
-      el.textContent=lang==='ar'?el.dataset.ar:el.dataset.en;
+    // Translate only leaf text nodes so nested spans/buttons keep their HTML.
+    const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+    const nodes=[];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(node=>{
+      const raw=node.nodeValue.trim();
+      if(!raw) return;
+      const key=lang==='ar' ? reverse[raw] : raw;
+      const value=lang==='ar' ? translations[raw] : translations[raw];
+      if(value && translations[raw]!==undefined){
+        node.nodeValue=node.nodeValue.replace(raw,value);
+      } else if(lang==='en' && reverse[raw]){
+        node.nodeValue=node.nodeValue.replace(raw,reverse[raw]);
+      }
     });
+    // Restore translated project details button labels.
+    $$('.project-details-btn').forEach(b=>b.textContent=lang==='ar'?'تفاصيل المشروع':'Project Details');
     if(langBtn) langBtn.textContent=lang==='en'?'العربية':'English';
   }
 
-  langBtn?.addEventListener('click',()=>{
-    lang=lang==='en'?'ar':'en';
-    localStorage.setItem('portfolioLang',lang);
-    applyLang();
+  // Use a safer attribute-based translation for project details so switching back works.
+  $$('.project-details-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const modal=$('#projectDetailsModal');
+      $('#detailsTitle').textContent=lang==='ar'?btn.dataset.titleAr:btn.dataset.titleEn;
+      $('#detailsText').textContent=lang==='ar'?btn.dataset.detailsAr:btn.dataset.detailsEn;
+      modal.classList.add('open');
+    });
   });
 
-  if(localStorage.getItem('portfolioTheme')==='dark')
-    document.body.classList.add('dark-mode');
+  if(langBtn) langBtn.addEventListener('click',()=>setLanguage(lang==='en'?'ar':'en'));
 
-  themeBtn?.addEventListener('click',()=>{
+  const savedTheme=localStorage.getItem('portfolioTheme');
+  if(savedTheme==='dark') document.body.classList.add('dark-mode');
+  function updateThemeButton(){
+    if(themeBtn) themeBtn.textContent=document.body.classList.contains('dark-mode')?'☀️':'🌙';
+  }
+  if(themeBtn) themeBtn.addEventListener('click',()=>{
     document.body.classList.toggle('dark-mode');
-    localStorage.setItem('portfolioTheme',
-      document.body.classList.contains('dark-mode')?'dark':'light');
+    localStorage.setItem('portfolioTheme',document.body.classList.contains('dark-mode')?'dark':'light');
+    updateThemeButton();
   });
+  updateThemeButton();
 
-  const modal=document.getElementById('rivaDetailsModal');
-  document.getElementById('rivaInfoBtn')?.addEventListener('click',()=>modal.classList.add('open'));
-  document.getElementById('rivaClose')?.addEventListener('click',()=>modal.classList.remove('open'));
-  modal?.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+  const modal=$('#projectDetailsModal');
+  const close=$('#detailsClose');
+  if(close) close.addEventListener('click',()=>modal.classList.remove('open'));
+  if(modal) modal.addEventListener('click',e=>{if(e.target===modal) modal.classList.remove('open')});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape' && modal) modal.classList.remove('open')});
 
-  document.querySelectorAll('img').forEach(img=>img.setAttribute('draggable','false'));
-  document.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG')e.preventDefault()});
-  document.addEventListener('contextmenu',e=>e.preventDefault());
+  $$('img').forEach(img=>img.setAttribute('draggable','false'));
+  document.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG') e.preventDefault()});
 
-  applyLang();
+  setLanguage(lang);
 })();
-</script>
-
-</body>
-</html>
+</script></body></html>
