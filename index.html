@@ -428,6 +428,8 @@ img{-webkit-user-drag:none;user-select:none}
 .portfolio-tools{position:fixed;top:16px;right:16px;z-index:3000;display:flex;gap:8px}
 .portfolio-tools button{border:1px solid #d9dee3;background:#fff;color:#172027;border-radius:999px;padding:9px 13px;font-weight:700;cursor:pointer;box-shadow:0 5px 18px rgba(0,0,0,.08)}
 .portfolio-tools button:hover{transform:translateY(-1px)}
+.portfolio-tools button.active{outline:2px solid #9fb8a9;outline-offset:1px}
+@media(max-width:850px){.portfolio-tools{top:84px;right:12px}.portfolio-tools button{padding:8px 10px;font-size:12px}}
 body.dark-mode{background:#101416!important;color:#f2f5f6!important}
 body.dark-mode header,body.dark-mode section,body.dark-mode footer{background-color:#101416!important;color:#f2f5f6!important}
 body.dark-mode .project,body.dark-mode .service-card,body.dark-mode .skill-card,body.dark-mode .about-card{background:#171c20!important;color:#f2f5f6!important}
@@ -447,8 +449,9 @@ body.dark-mode .riva-modal-close{background:#2b3339;color:#fff}
 <body>
 
 <div aria-label="Portfolio controls" class="portfolio-tools">
-<button id="languageToggle" type="button">العربية</button>
-<button aria-label="Toggle light and dark mode" id="themeToggle" type="button">◐</button>
+  <button id="arabicBtn" type="button">العربية</button>
+  <button id="englishBtn" type="button">English</button>
+  <button aria-label="Toggle light and dark mode" id="themeToggle" type="button">🌙 Dark</button>
 </div>
 <div aria-labelledby="detailsTitle" aria-modal="true" class="riva-modal" id="projectDetailsModal" role="dialog">
 <div class="riva-modal-box">
@@ -729,31 +732,23 @@ body.dark-mode .riva-modal-close{background:#2b3339;color:#fff}
 </style>
 <script>
 (function(){
-  const $ = (sel) => document.querySelector(sel);
-  const $$ = (sel) => document.querySelectorAll(sel);
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => document.querySelectorAll(s);
 
-  const menuBtn = $('#menuBtn');
-  const navLinks = $('#navLinks');
+  const menuBtn=$('#menuBtn'), navLinks=$('#navLinks');
   if(menuBtn && navLinks){
     menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
-    $$('.nav-links a').forEach(link=>link.addEventListener('click',()=>navLinks.classList.remove('open')));
+    $$('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
   }
-
-  const langBtn=$('#languageToggle');
-  const themeBtn=$('#themeToggle');
-  let lang=localStorage.getItem('portfolioLang') || 'en';
 
   const translations={
     'Home':'الرئيسية','About':'عنّي','Services':'الخدمات','Skills':'المهارات','Projects':'المشاريع','Contact':'تواصل',
-    'Available for freelance projects':'متاحة لمشاريع العمل الحر',
-    'Building':'أبني','digital':'رقمية','experiences.':'تجارب رقمية.',
-    "I'm Rana, a Web Developer creating modern, responsive and elegant websites for businesses, brands and individuals.":"أنا رنا، مطورة ويب أصمم مواقع عصرية ومتجاوبة وأنيقة للشركات والعلامات التجارية والأفراد.",
-    "Let's Work Together →":"لنعمل معًا →",'View My Work':'شاهدي أعمالي',
-    'Responsive':'متجاوب','Online Contact':'تواصل أونلاين','WEB DEVELOPER':'مطورة ويب',
-    'Rana — Creative & Modern Websites':'Rana — مواقع إبداعية وعصرية',
-    'About me':'عنّي','Simple ideas, carefully built.':'أفكار بسيطة، مبنية بعناية.',
+    'Available for freelance projects':'متاحة لمشاريع العمل الحر','Building':'أبني','digital':'رقمية','experiences.':'تجارب رقمية.',
+    "I'm Rana, a Web Developer creating modern, responsive and elegant websites for businesses, brands and individuals.":'أنا رنا، مطورة ويب أصمم مواقع عصرية ومتجاوبة وأنيقة للشركات والعلامات التجارية والأفراد.',
+    "Let's Work Together →":'لنعمل معًا →','View My Work':'شاهدي أعمالي','Responsive':'متجاوب','Online Contact':'تواصل أونلاين','WEB DEVELOPER':'مطورة ويب',
+    'Rana — Creative & Modern Websites':'Rana — مواقع إبداعية وعصرية','About me':'عنّي','Simple ideas, carefully built.':'أفكار بسيطة، مبنية بعناية.',
     'I focus on clean layouts, responsive design and a smooth experience across phones, tablets and computers.':'أركز على التصميم النظيف والتجاوب وتجربة استخدام سهلة على الموبايل والتابلت والكمبيوتر.',
-    "Hi, I'm Rana.":"مرحبًا، أنا رنا.",
+    "Hi, I'm Rana.":'مرحبًا، أنا رنا.',
     'Whether you need a restaurant website, business landing page, personal website or a simple online presence, I can build a tailored starting point.':'سواء كنتِ تحتاجين موقع مطعم أو صفحة أعمال أو موقعًا شخصيًا أو حضورًا بسيطًا أونلاين، أستطيع بناء موقع مناسب لاحتياجك.',
     'Responsive design':'تصميم متجاوب','Clean modern UI':'واجهة عصرية ونظيفة','Mobile friendly':'متوافق مع الموبايل','Clear communication':'تواصل واضح',
     'What I do':'ماذا أقدم','Focused web solutions for people and small businesses.':'حلول ويب عملية للأفراد والمشروعات الصغيرة.',
@@ -762,81 +757,79 @@ body.dark-mode .riva-modal-close{background:#2b3339;color:#fff}
     'Landing Pages':'صفحات هبوط','Focused pages for businesses, services, products and personal brands.':'صفحات مخصصة للأعمال والخدمات والمنتجات والعلامات الشخصية.',
     'My toolkit':'أدواتي','Technologies and abilities I am currently using and developing.':'التقنيات والمهارات التي أستخدمها وأطورها حاليًا.',
     'Selected work':'أعمال مختارة','A growing collection of practical projects built to improve my development skills.':'مجموعة من المشاريع العملية التي أنفذها لتطوير مهاراتي.',
-    'Luna Bistro':'Luna Bistro','Novara Studio':'Novara Studio','Personal Portfolio':'البورتفوليو الشخصي',
+    'Luna Bistro':'Luna Bistro','Novara Studio':'Novara Studio','Personal Portfolio':'البورتفوليو الشخصي','Riva Store':'Riva Store',
     'A modern restaurant website with a clean visual identity, menu, cart and WhatsApp ordering experience.':'موقع مطعم عصري بهوية بصرية نظيفة ومنيو وسلة شراء وطلب عبر واتساب.',
     'A modern responsive business website with services, projects, testimonials, contact form and WhatsApp integration.':'موقع أعمال متجاوب يحتوي على الخدمات والمشاريع وآراء العملاء ونموذج تواصل وربط بواتساب.',
     'A personal portfolio designed to present services, skills, projects and contact information.':'بورتفوليو شخصي لعرض الخدمات والمهارات والمشاريع وبيانات التواصل.',
+    'Original e-commerce concept built from scratch.':'متجر إلكتروني أصلي تم إنشاؤه من الصفر.',
     'Live Website ↗':'الموقع المباشر ↗','Project Details':'تفاصيل المشروع','You Are Here ↗':'أنتِ هنا ↗','GitHub ↗':'GitHub ↗',
     'My process':'خطوات عملي','How I work':'كيف أعمل','A simple process from idea to published website.':'خطوات بسيطة من الفكرة حتى نشر الموقع.',
-    'Discuss':'مناقشة','Understand the idea, audience and goals.':'فهم الفكرة والجمهور والأهداف.',
-    'Design':'التصميم','Plan the structure and visual direction.':'تخطيط الهيكل والشكل البصري.',
-    'Build':'التنفيذ','Develop the responsive website and interactions.':'تطوير الموقع المتجاوب والتفاعلات.',
-    'Launch':'النشر','Test the pages and publish the final version.':'اختبار الصفحات ونشر النسخة النهائية.',
+    'Discuss':'مناقشة','Understand the idea, audience and goals.':'فهم الفكرة والجمهور والأهداف.','Design':'التصميم','Plan the structure and visual direction.':'تخطيط الهيكل والشكل البصري.',
+    'Build':'التنفيذ','Develop the responsive website and interactions.':'تطوير الموقع المتجاوب والتفاعلات.','Launch':'النشر','Test the pages and publish the final version.':'اختبار الصفحات ونشر النسخة النهائية.',
     "Let's connect":'لنتواصل','Have a project in mind?':'لديكِ مشروع في بالك؟',
     "Tell me what you need and let's discuss how I can turn your idea into a clean, modern website.":'أخبريني بما تحتاجين وسنحدد كيف أحول فكرتك إلى موقع عصري ونظيف.',
     'WhatsApp Me ↗':'تواصلي معي عبر واتساب ↗','View GitHub ↗':'عرض GitHub ↗','Back to top ↑':'العودة للأعلى ↑',
     '© 2026 Rana. All rights reserved.':'© 2026 Rana. جميع الحقوق محفوظة.'
   };
-  const reverse={}; Object.keys(translations).forEach(k=>reverse[translations[k]]=k);
+  const reverse={}; Object.entries(translations).forEach(([en,ar])=>reverse[ar]=en);
 
-  function setLanguage(next){
-    lang=next;
-    localStorage.setItem('portfolioLang',lang);
+  // Save every original English text node once, so switching languages never corrupts the text.
+  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+  const textNodes=[];
+  while(walker.nextNode()){
+    const n=walker.currentNode;
+    if(n.parentElement && !['SCRIPT','STYLE'].includes(n.parentElement.tagName)){
+      const raw=n.nodeValue.trim();
+      if(raw) textNodes.push({node:n, original:n.nodeValue});
+    }
+  }
+
+  function applyLanguage(lang){
     document.documentElement.lang=lang;
     document.documentElement.dir=lang==='ar'?'rtl':'ltr';
-    // Translate only leaf text nodes so nested spans/buttons keep their HTML.
-    const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
-    const nodes=[];
-    while(walker.nextNode()) nodes.push(walker.currentNode);
-    nodes.forEach(node=>{
-      const raw=node.nodeValue.trim();
-      if(!raw) return;
-      const key=lang==='ar' ? reverse[raw] : raw;
-      const value=lang==='ar' ? translations[raw] : translations[raw];
-      if(value && translations[raw]!==undefined){
-        node.nodeValue=node.nodeValue.replace(raw,value);
-      } else if(lang==='en' && reverse[raw]){
-        node.nodeValue=node.nodeValue.replace(raw,reverse[raw]);
-      }
+    textNodes.forEach(({node,original})=>{
+      const raw=original.trim();
+      const translated=lang==='ar' ? translations[raw] : raw;
+      if(translated!==undefined){ node.nodeValue=original.replace(raw,translated); }
     });
-    // Restore translated project details button labels.
-    $$('.project-details-btn').forEach(b=>b.textContent=lang==='ar'?'تفاصيل المشروع':'Project Details');
-    if(langBtn) langBtn.textContent=lang==='en'?'العربية':'English';
+    // Project buttons are controlled independently by data attributes.
+    $$('.project-details-btn').forEach(btn=>btn.textContent=lang==='ar'?'تفاصيل المشروع':'Project Details');
+    $('#arabicBtn')?.classList.toggle('active',lang==='ar');
+    $('#englishBtn')?.classList.toggle('active',lang==='en');
+    localStorage.setItem('portfolioLang',lang);
   }
 
-  // Use a safer attribute-based translation for project details so switching back works.
-  $$('.project-details-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const modal=$('#projectDetailsModal');
-      $('#detailsTitle').textContent=lang==='ar'?btn.dataset.titleAr:btn.dataset.titleEn;
-      $('#detailsText').textContent=lang==='ar'?btn.dataset.detailsAr:btn.dataset.detailsEn;
-      modal.classList.add('open');
-    });
-  });
+  let lang=localStorage.getItem('portfolioLang') || 'en';
+  $('#arabicBtn')?.addEventListener('click',()=>applyLanguage('ar'));
+  $('#englishBtn')?.addEventListener('click',()=>applyLanguage('en'));
 
-  if(langBtn) langBtn.addEventListener('click',()=>setLanguage(lang==='en'?'ar':'en'));
-
-  const savedTheme=localStorage.getItem('portfolioTheme');
-  if(savedTheme==='dark') document.body.classList.add('dark-mode');
-  function updateThemeButton(){
-    if(themeBtn) themeBtn.textContent=document.body.classList.contains('dark-mode')?'☀️':'🌙';
+  // Theme
+  const themeBtn=$('#themeToggle');
+  function applyTheme(theme){
+    document.body.classList.toggle('dark-mode',theme==='dark');
+    if(themeBtn) themeBtn.textContent=theme==='dark'?'☀️ Light':'🌙 Dark';
+    localStorage.setItem('portfolioTheme',theme);
   }
-  if(themeBtn) themeBtn.addEventListener('click',()=>{
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem('portfolioTheme',document.body.classList.contains('dark-mode')?'dark':'light');
-    updateThemeButton();
-  });
-  updateThemeButton();
+  applyTheme(localStorage.getItem('portfolioTheme') || 'light');
+  themeBtn?.addEventListener('click',()=>applyTheme(document.body.classList.contains('dark-mode')?'light':'dark'));
 
+  // Project details modal
   const modal=$('#projectDetailsModal');
   const close=$('#detailsClose');
-  if(close) close.addEventListener('click',()=>modal.classList.remove('open'));
-  if(modal) modal.addEventListener('click',e=>{if(e.target===modal) modal.classList.remove('open')});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape' && modal) modal.classList.remove('open')});
+  function openDetails(btn){
+    const current=document.documentElement.lang || 'en';
+    $('#detailsTitle').textContent=current==='ar'?btn.dataset.titleAr:btn.dataset.titleEn;
+    $('#detailsText').textContent=current==='ar'?btn.dataset.detailsAr:btn.dataset.detailsEn;
+    modal?.classList.add('open');
+  }
+  $$('.project-details-btn').forEach(btn=>btn.addEventListener('click',()=>openDetails(btn)));
+  close?.addEventListener('click',()=>modal?.classList.remove('open'));
+  modal?.addEventListener('click',e=>{if(e.target===modal) modal.classList.remove('open')});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape') modal?.classList.remove('open')});
 
   $$('img').forEach(img=>img.setAttribute('draggable','false'));
-  document.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG') e.preventDefault()});
+  document.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG')e.preventDefault()});
 
-  setLanguage(lang);
+  applyLanguage(lang);
 })();
 </script></body></html>
