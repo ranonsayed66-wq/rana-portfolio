@@ -3,111 +3,441 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rana — Web Developer creating modern, responsive and elegant websites for businesses, brands and individuals.">
+<meta name="theme-color" content="#10251f">
 <title>Rana | Web Developer</title>
-<meta name="description" content="Rana — Web Developer creating modern, responsive websites.">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
 :root{
-  --bg:#f6f7f5;
-  --card:#fff;
-  --text:#202522;
-  --muted:#68716c;
-  --accent:#71847b;
-  --accent2:#53665d;
-  --soft:#e8eeea;
-  --line:#dfe5e1;
-  --dark:#202623;
+  --bg:#f5f3ee;
+  --card:#ffffff;
+  --dark:#10251f;
+  --dark2:#17352d;
+  --text:#24332e;
+  --muted:#71807a;
+  --line:#dfe5e0;
+  --accent:#9fb8a9;
+  --accent2:#dfe9e2;
+  --white:#fff;
+  --shadow:0 20px 60px rgba(16,37,31,.10);
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-a{text-decoration:none;color:inherit}
-.container{width:min(1120px,92%);margin:auto}
-header{position:fixed;top:0;left:0;width:100%;z-index:99;background:rgba(246,247,245,.88);backdrop-filter:blur(15px);border-bottom:1px solid #e3e8e5}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between}
-.logo{font:700 27px "Playfair Display",serif}.logo span{color:var(--accent)}
-.links{display:flex;gap:28px;align-items:center}.links a{font-size:14px;color:var(--muted);transition:.25s}.links a:hover{color:var(--text)}
-.menu{display:none;border:0;background:none;font-size:28px}
-.hero{min-height:100vh;display:grid;align-items:center;padding:120px 0 70px}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}
-.badge{display:inline-flex;gap:9px;align-items:center;padding:8px 14px;border-radius:30px;background:var(--soft);color:var(--accent2);font-size:13px;font-weight:600;margin-bottom:24px}
-.dot{width:7px;height:7px;border-radius:50%;background:#789287}
-h1{font:700 clamp(48px,7vw,82px)/1.02 "Playfair Display",serif;letter-spacing:-2px;margin-bottom:24px}
-h1 span{color:var(--accent)}
-.hero p{max-width:620px;color:var(--muted);font-size:17px;margin-bottom:30px}
-.actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 21px;border-radius:10px;border:1px solid var(--line);font-size:14px;font-weight:700;transition:.25s}
-.btn:hover{transform:translateY(-2px)}
-.primary{background:var(--dark);color:#fff;border-color:var(--dark)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:42px;box-shadow:0 25px 70px rgba(30,40,35,.08)}
-.avatar{width:125px;height:125px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font:600 55px "Playfair Display",serif;color:var(--accent2);margin-bottom:25px}
-.card h2{font-size:25px}.muted{color:var(--muted)}
-.line{height:1px;background:var(--line);margin:24px 0}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}.stats strong{font-size:23px;display:block}.stats small{color:var(--muted)}
-section{padding:105px 0}
-.alt{background:#edf1ee}
-.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:700;color:var(--accent);margin-bottom:10px}
-.title{font:700 clamp(36px,5vw,54px)/1.15 "Playfair Display",serif;margin-bottom:14px}
-.section-intro{color:var(--muted);max-width:650px;margin-bottom:50px}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:55px}
-.box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px}
-.box p{color:var(--muted)}
-.features{display:grid;gap:18px}.feature{display:flex;gap:15px}.num{width:42px;height:42px;border-radius:12px;background:var(--soft);display:grid;place-items:center;color:var(--accent2);font-weight:700;flex:none}
-.feature h3{font-size:17px}.feature p{font-size:14px;color:var(--muted)}
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.service{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;transition:.25s}.service:hover{transform:translateY(-5px);box-shadow:0 18px 50px rgba(30,40,35,.08)}
-.service span{font-size:12px;font-weight:700;color:var(--accent)}.service h3{margin:28px 0 8px}.service p{font-size:14px;color:var(--muted)}
-.skills{display:grid;grid-template-columns:1fr 1fr;gap:55px}.skill{margin-bottom:20px}.skilltop{display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:7px}.bar{height:7px;background:var(--soft);border-radius:20px;overflow:hidden}.fill{height:100%;background:var(--accent);border-radius:20px}.tags{display:flex;flex-wrap:wrap;gap:10px}.tag{background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:9px;color:var(--muted);font-size:13px}
-.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.project{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:.25s}.project:hover{transform:translateY(-5px);box-shadow:0 18px 50px rgba(30,40,35,.08)}
-.project-cover{height:230px;background:linear-gradient(135deg,#dce5e0,#f7f8f6);display:grid;place-items:center;font:700 35px "Playfair Display",serif}
-.project-body{padding:27px}.project-body p{color:var(--muted);font-size:14px;margin:8px 0 18px}.project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}.project-tags span{background:var(--soft);padding:5px 8px;border-radius:6px;font-size:11px;color:var(--accent2)}.project-link{font-size:14px;font-weight:700;color:var(--accent2)}
-.process{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.step{border-top:1px solid var(--line);padding-top:22px}.step b{color:var(--accent);font-size:13px}.step h3{margin:10px 0 6px}.step p{font-size:14px;color:var(--muted)}
-.contact-box{background:var(--dark);color:#fff;border-radius:30px;padding:60px;display:flex;justify-content:space-between;align-items:center;gap:35px}.contact-box .eyebrow{color:#aebbb5}.contact-box h2{font:700 clamp(35px,5vw,54px)/1.1 "Playfair Display",serif;margin-bottom:14px}.contact-box p{color:#b8c2be;max-width:580px}.whatsapp{background:#f6f7f5;color:var(--text);border:0;white-space:nowrap}
-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px}.foot a{margin-left:18px}
-@media(max-width:850px){
- .links{display:none;position:absolute;top:76px;left:0;width:100%;background:var(--bg);padding:22px;flex-direction:column;border-bottom:1px solid var(--line)}
- .links.show{display:flex}.menu{display:block}.hero-grid,.about,.skills{grid-template-columns:1fr}.services{grid-template-columns:1fr}.projects{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}.contact-box{flex-direction:column;align-items:flex-start;padding:40px 28px}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
 }
-@media(max-width:520px){
- section{padding:80px 0}.card{padding:30px}.process{grid-template-columns:1fr}.foot{flex-direction:column}.foot a{margin:0 16px 0 0}.actions .btn{width:100%}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{width:min(1120px,92%);margin:auto}
+
+header{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:1000;
+  background:rgba(245,243,238,.90);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(223,229,224,.8);
+}
+.nav{
+  height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:29px;
+  font-weight:700;
+  color:var(--dark);
+}
+.logo span{color:#8ca596}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{
+  font-size:14px;
+  font-weight:600;
+  color:#4d5d57;
+  transition:.25s;
+}
+.nav-links a:hover{color:var(--dark)}
+.menu-btn{
+  display:none;
+  border:0;
+  background:none;
+  font-size:27px;
+  color:var(--dark);
+  cursor:pointer;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:14px 22px;
+  border-radius:12px;
+  font-weight:700;
+  font-size:14px;
+  transition:.25s;
+  cursor:pointer;
+  border:1px solid transparent;
+}
+.btn-primary{background:var(--dark);color:white}
+.btn-primary:hover{background:#21453a;transform:translateY(-2px)}
+.btn-light{background:white;color:var(--dark);border-color:var(--line)}
+.btn-light:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+.hero{
+  min-height:100vh;
+  padding:150px 0 90px;
+  display:flex;
+  align-items:center;
+  background:
+    radial-gradient(circle at 85% 20%,rgba(159,184,169,.28),transparent 30%),
+    radial-gradient(circle at 10% 80%,rgba(223,233,226,.8),transparent 30%);
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:70px;
+  align-items:center;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:8px 13px;
+  border-radius:50px;
+  background:var(--accent2);
+  color:#3c5a4e;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:22px;
+}
+.dot{width:8px;height:8px;border-radius:50%;background:#5f8a73}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  color:var(--dark);
+  font-size:clamp(48px,7vw,82px);
+  line-height:1.02;
+  margin-bottom:22px;
+}
+.hero h1 span{color:#829d8e}
+.hero p{
+  max-width:620px;
+  color:var(--muted);
+  font-size:17px;
+  margin-bottom:30px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.stats{
+  display:flex;
+  gap:35px;
+  margin-top:38px;
+}
+.stat strong{display:block;font-size:24px;color:var(--dark)}
+.stat span{font-size:12px;color:var(--muted)}
+
+.hero-card{
+  position:relative;
+  padding:18px;
+  border-radius:28px;
+  background:rgba(255,255,255,.68);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:var(--shadow);
+}
+.profile-art{
+  min-height:470px;
+  border-radius:20px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#17352d,#789487);
+  position:relative;
+}
+.profile-art:before{
+  content:'R';
+  position:absolute;
+  font-family:'Playfair Display',serif;
+  font-size:290px;
+  line-height:1;
+  color:rgba(255,255,255,.10);
+  right:-25px;
+  bottom:-55px;
+}
+.profile-info{
+  position:absolute;
+  left:24px;right:24px;bottom:24px;
+  padding:22px;
+  border-radius:18px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);
+}
+.profile-info small{color:#71807a;font-weight:600}
+.profile-info h3{font-family:'Playfair Display',serif;color:var(--dark);font-size:25px}
+
+section{padding:100px 0}
+.section-head{max-width:650px;margin-bottom:45px}
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#719080;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:10px;
+}
+.section-head h2{
+  font-family:'Playfair Display',serif;
+  color:var(--dark);
+  font-size:clamp(35px,5vw,52px);
+  line-height:1.1;
+  margin-bottom:15px;
+}
+.section-head p{color:var(--muted)}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:70px;
+  align-items:start;
+}
+.about-box{
+  background:var(--dark);
+  color:white;
+  border-radius:24px;
+  padding:35px;
+}
+.about-box h3{font-family:'Playfair Display',serif;font-size:30px;margin-bottom:10px}
+.about-box p{color:#c7d5cf;font-size:14px}
+.about-text p{color:var(--muted);margin-bottom:18px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}
+.check{font-size:14px;font-weight:600}
+.check:before{content:'✓';margin-right:8px;color:#789987}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:30px;
+  transition:.3s;
+}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.icon{
+  width:50px;height:50px;
+  display:grid;place-items:center;
+  border-radius:14px;
+  background:var(--accent2);
+  color:var(--dark);
+  font-weight:800;
+  margin-bottom:20px;
+}
+.card h3{color:var(--dark);margin-bottom:8px}
+.card p{font-size:14px;color:var(--muted)}
+
+.skills-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+}
+.skill{margin-bottom:24px}
+.skill-top{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:8px}
+.bar{height:9px;border-radius:20px;background:#e1e7e3;overflow:hidden}
+.fill{height:100%;background:#769484;border-radius:20px}
+
+.projects{background:#edf1ed}
+.project{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:24px;
+  overflow:hidden;
+}
+.project-preview{
+  height:260px;
+  position:relative;
+  overflow:hidden;
+  background:#16352c;
+}
+.browser{
+  position:absolute;
+  inset:20px;
+  background:#f8f8f5;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,.18);
+}
+.browser-top{
+  height:30px;
+  background:#e7ebe7;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:0 12px;
+}
+.browser-top i{width:7px;height:7px;border-radius:50%;background:#a9b4ae}
+.site-preview{padding:25px;color:#19362e}
+.site-nav{display:flex;justify-content:space-between;font-size:10px;font-weight:800;margin-bottom:22px}
+.site-hero{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center}
+.site-hero h4{font-family:'Playfair Display',serif;font-size:27px;line-height:1.05}
+.site-hero p{font-size:8px;color:#71807a;margin-top:8px}
+.food{
+  height:125px;
+  border-radius:12px;
+  background:
+    radial-gradient(circle at 50% 48%,#c8a46d 0 17%,transparent 18%),
+    radial-gradient(circle at 43% 44%,#7d5634 0 8%,transparent 9%),
+    radial-gradient(circle at 60% 55%,#8f6d3d 0 10%,transparent 11%),
+    radial-gradient(circle at 50% 50%,#e7d6b8 0 35%,#d8c09a 36% 43%,#55715e 44% 100%);
+}
+.project-body{padding:28px}
+.project-tag{
+  display:inline-block;
+  padding:5px 10px;
+  border-radius:30px;
+  background:var(--accent2);
+  color:#557463;
+  font-size:11px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+.project h3{font-family:'Playfair Display',serif;font-size:27px;color:var(--dark);margin-bottom:8px}
+.project p{color:var(--muted);font-size:14px;margin-bottom:20px}
+.project-links{display:flex;gap:10px;flex-wrap:wrap}
+
+.process{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+.step{
+  padding:25px;
+  border-left:2px solid #b9cbbf;
+}
+.step-num{font-size:12px;font-weight:800;color:#7c9587}
+.step h3{margin:8px 0;color:var(--dark)}
+.step p{font-size:13px;color:var(--muted)}
+
+.contact{
+  padding-bottom:110px;
+}
+.contact-box{
+  background:var(--dark);
+  color:white;
+  border-radius:30px;
+  padding:55px;
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:40px;
+  align-items:center;
+}
+.contact-box h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(35px,5vw,55px);
+  line-height:1.08;
+  margin-bottom:15px;
+}
+.contact-box p{color:#c5d2cc;max-width:600px}
+.contact-actions{display:flex;flex-direction:column;gap:12px}
+.contact-actions .btn-light{border:0}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:28px 0;
+}
+.footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  color:var(--muted);
+  font-size:13px;
+}
+.footer a{font-weight:700;color:var(--dark)}
+
+@media(max-width:850px){
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:78px;left:4%;right:4%;
+    background:white;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px;
+    box-shadow:var(--shadow);
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+  .hero-grid,.about-grid,.skills-wrap,.contact-box{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .process{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  section{padding:75px 0}
+  .hero{padding-top:125px}
+  .hero h1{font-size:52px}
+  .stats{gap:20px}
+  .cards,.process,.checks{grid-template-columns:1fr}
+  .contact-box{padding:32px 24px}
+  .footer{flex-direction:column;text-align:center}
+  .profile-art{min-height:390px}
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="container nav">
-    <a class="logo" href="#home">Rana<span>.</span></a>
-    <nav class="links" id="links">
-      <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a>
-      <a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+    <a href="#home" class="logo">Rana<span>.</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <button class="menu" id="menu" aria-label="Open menu">☰</button>
   </div>
 </header>
 
 <main>
+
 <section class="hero" id="home">
   <div class="container hero-grid">
     <div>
       <div class="badge"><span class="dot"></span> Available for freelance projects</div>
-      <h1>Building digital <span>experiences.</span></h1>
-      <p>I'm Rana, a Web Developer creating modern, responsive and elegant websites for businesses, brands and individuals.</p>
-      <div class="actions">
-        <a class="btn primary" target="_blank" href="https://wa.me/201024546840?text=Hello%20Rana%2C%20I%27m%20interested%20in%20working%20with%20you.">Contact Me</a>
-        <a class="btn" href="#projects">View My Work</a>
+      <h1>Building <span>digital</span> experiences.</h1>
+      <p>
+        I'm Rana, a Web Developer creating modern, responsive and elegant websites
+        for businesses, brands and individuals.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Let's Work Together →</a>
+        <a class="btn btn-light" href="#projects">View My Work</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>01+</strong><span>Projects</span></div>
+        <div class="stat"><strong>100%</strong><span>Responsive</span></div>
+        <div class="stat"><strong>24/7</strong><span>Online Contact</span></div>
       </div>
     </div>
-    <div class="card">
-      <div class="avatar">R</div>
-      <h2>Rana</h2>
-      <p class="muted">Web Developer</p>
-      <div class="line"></div>
-      <div class="stats">
-        <div><strong>Web</strong><small>Development</small></div>
-        <div><strong>UI</strong><small>Modern Design</small></div>
+
+    <div class="hero-card">
+      <div class="profile-art">
+        <div class="profile-info">
+          <small>WEB DEVELOPER</small>
+          <h3>Rana — Creative & Modern Websites</h3>
+        </div>
       </div>
     </div>
   </div>
@@ -115,130 +445,235 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
 
 <section id="about">
   <div class="container">
-    <div class="eyebrow">About Me</div>
-    <h2 class="title">Turning ideas into modern websites.</h2>
-    <p class="section-intro">I create clean, responsive and user-friendly websites with attention to design, usability and a professional online presence.</p>
-    <div class="about">
-      <div class="box">
-        <h3>Who I Am</h3>
-        <br>
-        <p>I'm Rana, a Web Developer passionate about turning ideas into polished digital experiences. I focus on clear layouts, responsive design and simple user experiences.</p>
-        <br>
-        <p>I can help businesses, startups and individuals present their work or services professionally online.</p>
+    <div class="section-head">
+      <div class="eyebrow">About me</div>
+      <h2>Simple ideas, carefully built.</h2>
+      <p>I focus on clean layouts, responsive design and a smooth experience across phones, tablets and computers.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-box">
+        <h3>Hi, I'm Rana.</h3>
+        <p>
+          I'm a beginner Web Developer building my skills through real projects.
+          My goal is to create websites that look professional, feel easy to use,
+          and represent each client's idea clearly.
+        </p>
       </div>
-      <div class="features">
-        <div class="feature"><div class="num">01</div><div><h3>Modern Design</h3><p>Clean and elegant interfaces built around the project identity.</p></div></div>
-        <div class="feature"><div class="num">02</div><div><h3>Responsive Websites</h3><p>Layouts that adapt smoothly to phones, tablets and computers.</p></div></div>
-        <div class="feature"><div class="num">03</div><div><h3>User Focused</h3><p>Clear navigation and practical experiences for visitors.</p></div></div>
+
+      <div class="about-text">
+        <p>
+          I work with HTML, CSS and JavaScript to turn ideas into functional,
+          responsive web pages. I care about details, organized code and modern
+          visual design.
+        </p>
+        <p>
+          Whether you need a restaurant website, business landing page, personal
+          website or a simple online presence, I can build a tailored starting point.
+        </p>
+        <div class="checks">
+          <div class="check">Responsive design</div>
+          <div class="check">Clean modern UI</div>
+          <div class="check">Mobile friendly</div>
+          <div class="check">Clear communication</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="alt" id="services">
+<section id="services">
   <div class="container">
-    <div class="eyebrow">Services</div>
-    <h2 class="title">What I can build for you.</h2>
-    <p class="section-intro">Web solutions designed around your goals, content and audience.</p>
-    <div class="services">
-      <div class="service"><span>01 / WEBSITE</span><h3>Business Websites</h3><p>Professional websites for businesses, restaurants, shops and personal brands.</p></div>
-      <div class="service"><span>02 / LANDING PAGE</span><h3>Landing Pages</h3><p>Focused pages for products, services, campaigns and online presence.</p></div>
-      <div class="service"><span>03 / RESPONSIVE</span><h3>Responsive Design</h3><p>Optimized experiences across mobile, tablet and desktop.</p></div>
-      <div class="service"><span>04 / UI</span><h3>Modern UI</h3><p>Thoughtful layouts, typography and visual hierarchy.</p></div>
-      <div class="service"><span>05 / MAINTENANCE</span><h3>Website Updates</h3><p>Content updates, improvements and fixes for existing websites.</p></div>
-      <div class="service"><span>06 / DEPLOYMENT</span><h3>Website Publishing</h3><p>Preparing websites for online publishing and GitHub Pages hosting.</p></div>
+    <div class="section-head">
+      <div class="eyebrow">What I do</div>
+      <h2>Services</h2>
+      <p>Focused web solutions for people and small businesses.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon">&lt;/&gt;</div>
+        <h3>Website Development</h3>
+        <p>Modern websites built with clean HTML, CSS and JavaScript.</p>
+      </div>
+      <div class="card">
+        <div class="icon">UI</div>
+        <h3>Responsive Design</h3>
+        <p>Layouts that adapt smoothly to phones, tablets and desktop screens.</p>
+      </div>
+      <div class="card">
+        <div class="icon">↗</div>
+        <h3>Landing Pages</h3>
+        <p>Focused pages for businesses, services, products and personal brands.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="skills">
   <div class="container">
-    <div class="eyebrow">Skills</div>
-    <h2 class="title">Tools & technologies.</h2>
-    <p class="section-intro">Core technologies and skills I use for modern web development.</p>
-    <div class="skills">
+    <div class="section-head">
+      <div class="eyebrow">My toolkit</div>
+      <h2>Skills</h2>
+      <p>Technologies and abilities I am currently using and developing.</p>
+    </div>
+
+    <div class="skills-wrap">
       <div>
-        <div class="skill"><div class="skilltop"><span>HTML</span><span>95%</span></div><div class="bar"><div class="fill" style="width:95%"></div></div></div>
-        <div class="skill"><div class="skilltop"><span>CSS</span><span>90%</span></div><div class="bar"><div class="fill" style="width:90%"></div></div></div>
-        <div class="skill"><div class="skilltop"><span>JavaScript</span><span>85%</span></div><div class="bar"><div class="fill" style="width:85%"></div></div></div>
-        <div class="skill"><div class="skilltop"><span>Responsive Design</span><span>90%</span></div><div class="bar"><div class="fill" style="width:90%"></div></div></div>
+        <div class="skill">
+          <div class="skill-top"><span>HTML</span><span>95%</span></div>
+          <div class="bar"><div class="fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-top"><span>CSS</span><span>90%</span></div>
+          <div class="bar"><div class="fill" style="width:90%"></div></div>
+        </div>
       </div>
-      <div class="tags">
-        <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span>
-        <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Responsive Design</span>
-        <span class="tag">UI Design</span><span class="tag">Web Development</span>
+      <div>
+        <div class="skill">
+          <div class="skill-top"><span>JavaScript</span><span>85%</span></div>
+          <div class="bar"><div class="fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-top"><span>Responsive Design</span><span>90%</span></div>
+          <div class="bar"><div class="fill" style="width:90%"></div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="alt" id="projects">
+<section class="projects" id="projects">
   <div class="container">
-    <div class="eyebrow">Selected Work</div>
-    <h2 class="title">Projects I've built.</h2>
-    <p class="section-intro">A selection of projects that demonstrate my web development work.</p>
-    <div class="projects">
+    <div class="section-head">
+      <div class="eyebrow">Selected work</div>
+      <h2>Projects</h2>
+      <p>A growing collection of practical projects built to improve my development skills.</p>
+    </div>
+
+    <div class="cards">
+
       <article class="project">
-        <div class="project-cover">Luna Bistro</div>
+        <div class="project-preview">
+          <div class="browser">
+            <div class="browser-top"><i></i><i></i><i></i></div>
+            <div class="site-preview">
+              <div class="site-nav"><span>LUNA BISTRO</span><span>MENU · ABOUT · CONTACT</span></div>
+              <div class="site-hero">
+                <div>
+                  <h4>Good food.<br>Good mood.</h4>
+                  <p>A modern restaurant website concept.</p>
+                </div>
+                <div class="food"></div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="project-body">
+          <span class="project-tag">HTML · CSS · JavaScript</span>
           <h3>Luna Bistro</h3>
-          <p>A modern restaurant website created to present the restaurant, menu and brand in an elegant way.</p>
-          <div class="project-tags"><span>HTML</span><span>CSS</span><span>Responsive</span><span>Restaurant</span></div>
-          <a class="project-link" target="_blank" href="https://ranonsayed66-wq.github.io/Luna-Bistor/">View Project →</a>
+          <p>A modern restaurant website with a clean visual identity and responsive layout.</p>
+          <div class="project-links">
+            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://ranonsayed66-wq.github.io/Luna-Bistor/">Live Website ↗</a>
+            <a class="btn btn-light" target="_blank" rel="noopener" href="https://github.com/ranonsayed66-wq">GitHub ↗</a>
+          </div>
         </div>
       </article>
+
       <article class="project">
-        <div class="project-cover">Portfolio</div>
+        <div class="project-preview" style="background:linear-gradient(145deg,#dce7e0,#8ea99a)">
+          <div class="browser">
+            <div class="browser-top"><i></i><i></i><i></i></div>
+            <div class="site-preview">
+              <div class="site-nav"><span>RANA.</span><span>ABOUT · WORK · CONTACT</span></div>
+              <div class="site-hero">
+                <div>
+                  <h4>Building digital experiences.</h4>
+                  <p>Personal portfolio for a web developer.</p>
+                </div>
+                <div style="height:125px;border-radius:12px;background:linear-gradient(145deg,#17352d,#9fb8a9);display:grid;place-items:center;color:white;font-family:'Playfair Display';font-size:55px">R.</div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="project-body">
+          <span class="project-tag">Portfolio · Responsive</span>
           <h3>Personal Portfolio</h3>
-          <p>A modern portfolio designed to showcase my skills, services and projects to potential clients.</p>
-          <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive</span></div>
-          <a class="project-link" href="#home">You're Viewing It →</a>
+          <p>A personal portfolio designed to present services, skills, projects and contact information.</p>
+          <div class="project-links">
+            <a class="btn btn-primary" href="#home">You Are Here ↗</a>
+            <a class="btn btn-light" target="_blank" rel="noopener" href="https://github.com/ranonsayed66-wq">GitHub ↗</a>
+          </div>
         </div>
       </article>
+
     </div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="eyebrow">My Process</div>
-    <h2 class="title">From idea to website.</h2>
+    <div class="section-head">
+      <div class="eyebrow">My process</div>
+      <h2>How I work</h2>
+      <p>A simple process from idea to published website.</p>
+    </div>
+
     <div class="process">
-      <div class="step"><b>01</b><h3>Discover</h3><p>Understand the business, goals and requirements.</p></div>
-      <div class="step"><b>02</b><h3>Design</h3><p>Create the structure and visual direction.</p></div>
-      <div class="step"><b>03</b><h3>Develop</h3><p>Turn the idea into a responsive working website.</p></div>
-      <div class="step"><b>04</b><h3>Launch</h3><p>Test and prepare the website for publishing.</p></div>
+      <div class="step"><div class="step-num">01</div><h3>Discuss</h3><p>Understand the idea, audience and goals.</p></div>
+      <div class="step"><div class="step-num">02</div><h3>Design</h3><p>Plan the structure and visual direction.</p></div>
+      <div class="step"><div class="step-num">03</div><h3>Build</h3><p>Develop the responsive website and interactions.</p></div>
+      <div class="step"><div class="step-num">04</div><h3>Launch</h3><p>Test the pages and publish the final version.</p></div>
     </div>
   </div>
 </section>
 
-<section id="contact">
+<section class="contact" id="contact">
   <div class="container">
     <div class="contact-box">
       <div>
-        <div class="eyebrow">Let's Work Together</div>
+        <div class="eyebrow" style="color:#a9c0b3">Let's connect</div>
         <h2>Have a project in mind?</h2>
-        <p>Tell me about your idea and let's create something modern and useful together.</p>
+        <p>
+          Tell me what you need and let's discuss how I can turn your idea into
+          a clean, modern website.
+        </p>
       </div>
-      <a class="btn whatsapp" target="_blank" href="https://wa.me/201024546840?text=Hello%20Rana%2C%20I%27d%20like%20to%20discuss%20a%20website%20project.">Send Message on WhatsApp</a>
+      <div class="contact-actions">
+        <a class="btn btn-light" target="_blank" rel="noopener"
+           href="https://wa.me/201024546840?text=Hello%20Rana%2C%20I%20saw%20your%20portfolio%20and%20I%27m%20interested%20in%20a%20website.">
+          WhatsApp Me ↗
+        </a>
+        <a class="btn" style="color:white;border-color:#456257"
+           href="https://github.com/ranonsayed66-wq" target="_blank" rel="noopener">
+          View GitHub ↗
+        </a>
+      </div>
     </div>
   </div>
 </section>
+
 </main>
 
 <footer>
-  <div class="container foot">
-    <span>© 2026 Rana. All rights reserved.</span>
-    <div><a target="_blank" href="https://wa.me/201024546840">WhatsApp</a><a href="#home">Back to top ↑</a></div>
+  <div class="container footer">
+    <div>© 2026 Rana. All rights reserved.</div>
+    <div><a href="#home">Back to top ↑</a></div>
   </div>
 </footer>
 
 <script>
-const menu=document.getElementById("menu");
-const links=document.getElementById("links");
-menu.addEventListener("click",()=>links.classList.toggle("show"));
-document.querySelectorAll("#links a").forEach(a=>a.addEventListener("click",()=>links.classList.remove("show")));
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
 </script>
+
 </body>
 </html>
